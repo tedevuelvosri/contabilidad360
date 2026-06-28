@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contabilidad360 | Soluciones Corporativas B2B</title>
+    <style>
+        /* Variables de color */
+        :root {
+            --primary-blue: #0066FF;
+            --dark-navy: #0A192F;
+            --light-bg: #F8FAFC;
+            --white: #FFFFFF;
+            --text-main: #334155;
+            --text-muted: #64748B;
+            --border-color: #E2E8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- BOTONES --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: background-color 0.3s, transform 0.2s;
+            text-align: center;
+            border: 2px solid var(--primary-blue);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0052CC;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-white {
+            background-color: var(--white);
+            color: var(--dark-navy);
+            border: 2px solid var(--white);
+        }
+
+        .btn-white:hover {
+            background-color: #f1f1f1;
+            color: var(--dark-navy);
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            background-color: var(--white);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--dark-navy);
+        }
+
+        .logo span {
+            color: var(--primary-blue);
+        }
+
+        /* --- HERO SECTION (Dual Layout) --- */
+        .hero {
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 5%;
+            color: var(--white);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, rgba(10, 25, 47, 0.95) 0%, rgba(10, 25, 47, 0.7) 100%);
+            z-index: 1;
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 35px;
+            color: #CBD5E1;
+        }
+
+        /* Tarjeta de Diagnóstico en el Hero */
+        .hero-card {
+            flex: 0 0 450px;
+            background: rgba(10, 25, 47, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .hero-card h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .hero-card p {
+            font-size: 15px;
+            color: #E2E8F0;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .hero-card .btn-white {
+            width: 100%;
+            font-size: 16px;
+            padding: 15px;
+        }
+
+        /* --- SECCIÓN 4 PILARES --- */
+        .section-padding {
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: var(--dark-navy);
+            margin-bottom: 50px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .card-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            color: var(--dark-navy);
+            margin-bottom: 15px;
+        }
+
+        /* --- SECCIÓN DE PRECIOS --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--primary-blue);
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.1);
+            background-color: var(--white);
+        }
+
+        .tag-popular {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-blue);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .pricing-card h3 {
+            font-size: 22px;
+            color: var(--dark-navy);
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 40px;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+        }
+
+        .price span {
+            font-size: 16px;
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .features-list li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .features-list li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+        }
+
+        /* --- SOLUCIONES A MEDIDA (Diseño Claro Estilizado) --- */
+        .custom-plan {
+            background: var(--white);
+            max-width: 1100px;
+            margin: 0 auto 60px; 
+            padding: 50px 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 40px rgba(0, 102, 255, 0.08);
+            border: 1px solid var(--border-color);
+            border-left: 6px solid var(--primary-blue);
+        }
+
+        .custom-plan-content {
+            max-width: 650px;
+            text-align: left;
+        }
+
+        .custom-plan-content h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--dark-navy);
+        }
+
+        .custom-plan-content p {
+            color: var(--text-muted);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .custom-plan-action {
+            flex-shrink: 0;
+            margin-left: 40px;
+        }
+
+        /* --- RESPONSIVIDAD --- */
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-card {
+                flex: auto;
+                width: 100%;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .pricing-card.featured { transform: scale(1); }
+            .pricing-grid { gap: 40px; }
+            
+            .custom-plan {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 30px;
+                margin: 0 5% 40px;
+            }
+            .custom-plan-content {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            .custom-plan-action {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <nav>
+        <div class="logo">CONTABILIDAD<span>360</span></div>
+        <a href="https://wa.me/593987339057?text=Hola,%20quisiera%20hacer%20una%20consulta%20rápida." target="_blank" class="btn btn-outline">Contacto</a>
+    </nav>
+
+    <!-- Sección Hero (Dual Layout) -->
+    <section class="hero">
+        <div class="hero-container">
+            
+            <!-- Contenido Principal -->
+            <div class="hero-content">
+                <h1>Tranquilidad financiera y tributaria con procesos automatizados</h1>
+                <p>Fusionamos servicios tradicionales de alto nivel con tecnología SaaS para el crecimiento escalable de tu empresa en Ecuador.</p>
+                <a href="https://wa.me/593987339057?text=Hola,%20me%20interesa%20agendar%20una%20asesoría%20gratuita." target="_blank" class="btn">Agendar Asesoría Gratuita</a>
+            </div>
+
+            <!-- Tarjeta de Diagnóstico (Gancho Rápido) -->
+            <div class="hero-card">
+                <h2>¿Preocupado por multas u obligaciones pendientes?</h2>
+                <p>No dejes que los descuidos frenen tu negocio. Con un solo clic, analizamos y te enviamos un reporte detallado con tu <strong>estado tributario (SRI) y societario (SCVS)</strong> actual.</p>
+                <p style="font-size: 13px; color: #94A3B8;">Un servicio de diagnóstico rápido y directo, sin suscripciones ni compromisos, para que sepas exactamente dónde está parada tu empresa legalmente.</p>
+                <a href="https://wa.me/593987339057?text=Hola,%20quiero%20solicitar%20el%20reporte%20de%20mi%20estado%20tributario%20y%20societario." target="_blank" class="btn btn-white">Solicitar mi Estado Actual</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sección 4 Pilares -->
+    <section class="section-padding">
+        <h2 class="section-title">Nuestros 4 Pilares</h2>
+        <div class="grid-4">
+            <div class="card">
+                <div class="card-icon">⚖️</div>
+                <h3>Contabilidad Financiera</h3>
+                <p>Control riguroso y precisión bajo NIIF para asegurar la salud financiera de su empresa.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📄</div>
+                <h3>Gestión Tributaria</h3>
+                <p>Asesoría experta en normativa SRI, anexos y auditoría preventiva para optimizar impuestos.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h3>Nómina y Laboral</h3>
+                <p>Gestión integral de roles de pago y cumplimiento estricto con el Ministerio de Trabajo e IESS.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🏢</div>
+                <h3>Consultoría Societaria</h3>
+                <p>Estructuración legal y cumplimiento oportuno ante la Superintendencia de Compañías.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Precios y Soluciones a Medida -->
+    <section class="section-padding" style="background-color: #F1F5F9;">
+        <h2 class="section-title">Servicios Corporativos B2B</h2>
+        
+        <!-- Bloque Soluciones a Medida -->
+        <div class="custom-plan">
+            <div class="custom-plan-content">
+                <h3>Planes Personalizados para Empresas</h3>
+                <p>Entendemos que cada negocio es único. Ofrecemos consultoría especializada y estructuramos un plan a tu medida, diseñado específicamente para resolver las operaciones complejas y necesidades corporativas de tu empresa.</p>
+            </div>
+            <div class="custom-plan-action">
+                <a href="https://wa.me/593987339057?text=Hola,%20busco%20una%20solución%20contable%20a%20medida%20para%20mi%20empresa." target="_blank" class="btn">Solicitar Plan a Medida</a>
+            </div>
+        </div>
+
+        <!-- Grid de Planes Estándar -->
+        <div class="pricing-grid">
+            
+            <!-- Plan Emprendedor -->
+            <div class="pricing-card">
+                <h3>Plan Emprendedor</h3>
+                <div class="price">$60<span> / mes</span></div>
+                <ul class="features-list">
+                    <li>Declaraciones IVA/ATS</li>
+                    <li>Impuesto a la Renta Anual</li>
+                    <li>Sistema de facturación electrónica básico</li>
+                    <li>Soporte online prioritario</li>
+                </ul>
+                <a href="https://wa.me/593987339057?text=Hola,%20quiero%20empezar%20con%20el%20Plan%20Emprendedor%20de%20$60." target="_blank" class="btn btn-outline">Empezar Ahora</a>
+            </div>
+
+            <!-- Plan PYME (Destacado) -->
+            <div class="pricing-card featured">
+                <div class="tag-popular">Más Popular</div>
+                <h3>Plan PYME</h3>
+                <div class="price">$250<span> / mes</span></div>
+                <ul class="features-list">
+                    <li>Contabilidad completa bajo NIIF</li>
+                    <li>Nómina IESS/SUT (hasta 10 emp.)</li>
+                    <li>Cumplimiento SCVS</li>
+                    <li>Sistema de facturación electrónica estándar</li>
+                </ul>
+                <a href="https://wa.me/593987339057?text=Hola,%20me%20interesa%20contratar%20el%20Plan%20PYME%20de%20$250." target="_blank" class="btn">Contratar Plan</a>
+            </div>
+
+            <!-- Plan Corporativo -->
+            <div class="pricing-card">
+                <h3>Plan Corporativo 360</h3>
+                <div class="price">$650<span> / mes</span></div>
+                <ul class="features-list">
+                    <li>Todo lo del plan PYME</li>
+                    <li>Nómina ilimitada o +10 emp.</li>
+                    <li>Auditoría y Planificación Fiscal</li>
+                    <li>Sistema de facturación electrónica premium</li>
+                </ul>
+                <a href="https://wa.me/593987339057?text=Hola,%20necesito%20información%20sobre%20el%20Plan%20Corporativo%20360." target="_blank" class="btn btn-outline">Contactar a Ventas</a>
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+</html>

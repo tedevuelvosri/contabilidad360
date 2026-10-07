@@ -102,6 +102,7 @@
   .ficha-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(11,31,110,0.06);}
   .ficha-row:last-of-type{border-bottom:none;}
   .ficha-row .item{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink);}
+  .status-ok,.status-warn{white-space:nowrap;flex-shrink:0;}
   .status-ok{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--green);background:rgba(47,174,107,0.12);padding:4px 9px;border-radius:6px;}
   .status-warn{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--amber);background:rgba(232,163,61,0.15);padding:4px 9px;border-radius:6px;}
   .icon-ok, .icon-warn{width:18px;height:18px;flex-shrink:0;}
@@ -127,6 +128,8 @@
   .cred-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
   .cred-list li{display:flex;gap:12px;font-size:14.5px;color:var(--ink);line-height:1.5;}
   .cred-list li svg{flex-shrink:0;margin-top:2px;}
+
+  .credenciales h2{font-size:32px;font-weight:800;color:var(--navy-text);line-height:1.2;margin-bottom:18px;}
 
   /* Pilares */
   .pilares{background:var(--bg);}
@@ -161,7 +164,7 @@
   .popular-tag{
     position:absolute;top:-13px;left:50%;transform:translateX(-50%);
     background:var(--turquoise);color:var(--navy-deep);font-size:11px;font-weight:800;
-    padding:5px 16px;border-radius:20px;letter-spacing:0.04em;text-transform:uppercase;
+    padding:5px 16px;border-radius:20px;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap;
   }
   .plan-name{font-size:18px;font-weight:800;color:var(--navy-text);margin-bottom:4px;}
   .plan-sub{font-size:13px;color:var(--gray);margin-bottom:16px;}
@@ -200,12 +203,38 @@
     .pilares-grid{grid-template-columns:repeat(2,1fr);}
     .cred-grid{grid-template-columns:1fr;}
     .como-grid{grid-template-columns:1fr;gap:20px;}
-    .planes-grid{grid-template-columns:1fr;}
+    .planes-grid{grid-template-columns:1fr;row-gap:32px;}
     .hero h1{font-size:32px;}
     .section-head h2{font-size:26px;}
+    .credenciales h2{font-size:28px;}
+    section{padding:68px 0;}
   }
   @media (max-width:540px){
     .pilares-grid{grid-template-columns:1fr;}
+    .wrap{padding:0 20px;}
+    .nav{padding:12px 20px;gap:12px;}
+    .brand-name{font-size:15px;}
+    .brand svg{width:26px;height:26px;}
+    .hide-sm{display:none;}
+    section{padding:60px 0;}
+    .hero{padding:44px 0 52px;}
+    .hero h1{font-size:30px;}
+    .hero p.lead{font-size:16px;}
+    .hero-ctas .btn{width:100%;justify-content:center;}
+    .btn{white-space:normal;text-align:center;}
+    .ficha{padding:22px 18px 18px;}
+    .ficha-row{gap:10px;}
+    .ficha-row .item{font-size:13.5px;}
+    .ficha-foot{flex-direction:column;align-items:flex-start;gap:6px;}
+    .trust-strip .wrap{flex-direction:column;align-items:flex-start;gap:14px;}
+    .section-head{margin-bottom:36px;}
+    .credenciales h2{font-size:26px;}
+    .cred-box{padding:24px 20px;}
+    .planes-custom{padding:28px 22px;}
+    .planes-custom .btn{width:100%;justify-content:center;}
+    .plan-card{padding:30px 22px;}
+    .final-cta h2{font-size:25px;}
+    .footer-top{flex-direction:column;align-items:flex-start;}
   }
 </style>
 </head>
@@ -230,7 +259,7 @@
       <a href="#como-funciona">Diagnóstico</a>
       <a href="#planes">Planes</a>
     </nav>
-    <a class="btn btn-primary btn-sm" href="https://wa.me/593987339057?text=Hola,%20quisiera%20solicitar%20un%20diagnóstico%20tributario%20preliminar%20para%20mi%20negocio.">Consultar por WhatsApp</a>
+    <a class="btn btn-primary btn-sm nav-cta" href="https://wa.me/593987339057?text=Hola,%20quisiera%20solicitar%20un%20diagnóstico%20tributario%20preliminar%20para%20mi%20negocio."><span class="hide-sm">Consultar por&nbsp;</span>WhatsApp</a>
   </div>
 </header>
 

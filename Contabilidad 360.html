@@ -1,499 +1,511 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contabilidad360 | Soluciones Corporativas B2B</title>
-    <style>
-        /* Variables de color */
-        :root {
-            --primary-blue: #0066FF;
-            --dark-navy: #0A192F;
-            --light-bg: #F8FAFC;
-            --white: #FFFFFF;
-            --text-main: #334155;
-            --text-muted: #64748B;
-            --border-color: #E2E8F0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONTABILIDAD360 | Dirección Financiera y Cumplimiento Tributario Estratégico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1F6E;
+    --navy-deep:#071454;
+    --navy-text:#132A8C;
+    --turquoise:#5FE0E0;
+    --turquoise-soft:#E4FAFA;
+    --blue:#2E8FD1;
+    --bg:#F6F8FB;
+    --ink:#1C2233;
+    --gray:#525966;
+    --green:#2FAE6B;
+    --amber:#E8A33D;
+    --white:#FFFFFF;
+    --border:rgba(11,31,110,0.1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Montserrat',sans-serif;letter-spacing:-0.01em;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px;}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,248,251,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(11,31,110,0.08);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1160px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:18px;color:var(--navy-text);letter-spacing:-0.02em;}
+  .brand-name span{color:var(--blue);font-weight:700;}
+  .navlinks{display:flex;gap:28px;font-size:14.5px;font-weight:600;color:var(--navy-text);}
+  .navlinks a:hover{color:var(--blue);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:10px;
+    font-weight:700;font-size:14.5px;
+    transition:transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--navy);color:#fff;box-shadow:0 8px 20px rgba(11,31,110,0.25);}
+  .btn-primary:hover{background:var(--navy-deep);}
+  .btn-accent{background:var(--turquoise);color:var(--navy-deep);box-shadow:0 8px 20px rgba(95,224,224,0.35);}
+  .btn-accent:hover{background:#4cd1d1;}
+  .btn-ghost{border:1.5px solid rgba(11,31,110,0.25);color:var(--navy-text);}
+  .btn-ghost:hover{border-color:var(--navy);background:rgba(11,31,110,0.05);}
+  .btn-sm{padding:9px 18px;font-size:13.5px;}
 
-        body {
-            background-color: var(--light-bg);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
+  /* Hero */
+  .hero{
+    padding:80px 0 68px;
+    background:radial-gradient(1100px 500px at 78% -10%, rgba(95,224,224,0.22), transparent 65%), var(--bg);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;font-weight:600;letter-spacing:0.14em;
+    color:var(--blue);text-transform:uppercase;
+    margin-bottom:16px;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .hero h1{font-size:42px;font-weight:900;color:var(--navy-text);line-height:1.16;margin-bottom:20px;}
+  .hero p.lead{font-size:17px;color:var(--gray);max-width:520px;margin-bottom:30px;line-height:1.6;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px;}
+  .trust-inline{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--navy-text);font-weight:600;}
+  .trust-inline span{display:flex;align-items:center;gap:7px;}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0;}
 
-        /* --- BOTONES --- */
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: var(--primary-blue);
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 6px;
-            transition: background-color 0.3s, transform 0.2s;
-            text-align: center;
-            border: 2px solid var(--primary-blue);
-            cursor: pointer;
-        }
+  /* Ficha de diagnóstico */
+  .ficha-wrap{position:relative;}
+  .ficha{
+    background:#fff;
+    border-radius:18px;
+    padding:28px 26px 22px;
+    box-shadow:0 30px 60px -20px rgba(11,31,110,0.28), 0 0 0 1px rgba(11,31,110,0.08);
+    max-width:400px;margin:0 auto;
+    position:relative;
+  }
+  .ficha-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;padding-bottom:14px;border-bottom:1.5px dashed rgba(11,31,110,0.15);}
+  .ficha-head .label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:var(--gray);text-transform:uppercase;}
+  .ficha-head .title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:17px;color:var(--navy-text);margin-top:4px;}
+  .ficha-head .date{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gray);text-align:right;}
+  .ficha-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(11,31,110,0.06);}
+  .ficha-row:last-of-type{border-bottom:none;}
+  .ficha-row .item{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink);}
+  .status-ok{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--green);background:rgba(47,174,107,0.12);padding:4px 9px;border-radius:6px;}
+  .status-warn{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--amber);background:rgba(232,163,61,0.15);padding:4px 9px;border-radius:6px;}
+  .icon-ok, .icon-warn{width:18px;height:18px;flex-shrink:0;}
+  .ficha-foot{margin-top:16px;padding-top:14px;border-top:1.5px dashed rgba(11,31,110,0.15);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gray);display:flex;justify-content:space-between;align-items:center;}
 
-        .btn:hover {
-            background-color: #0052CC;
-            transform: translateY(-2px);
-        }
+  /* Barra de respaldo */
+  .trust-strip{background:var(--navy);padding:22px 0;}
+  .trust-strip .wrap{display:flex;justify-content:space-around;flex-wrap:wrap;gap:20px;}
+  .trust-item{display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;font-weight:600;}
+  .trust-item svg{flex-shrink:0;}
 
-        .btn-outline {
-            background-color: transparent;
-            color: var(--primary-blue);
-        }
+  /* Secciones generales */
+  section{padding:88px 0;}
+  .section-head{max-width:680px;margin:0 auto 52px;text-align:center;}
+  .section-head h2{font-size:32px;font-weight:800;color:var(--navy-text);margin-bottom:14px;}
+  .section-head p{color:var(--gray);font-size:16px;}
 
-        .btn-outline:hover {
-            background-color: var(--primary-blue);
-            color: var(--white);
-        }
+  /* Credenciales / Quiénes Somos */
+  .credenciales{background:#fff;border-bottom:1px solid var(--border);}
+  .cred-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .cred-box{background:var(--bg);border-radius:16px;padding:32px;border:1px solid var(--border);}
+  .cred-box h3{font-size:22px;font-weight:800;color:var(--navy-text);margin-bottom:16px;}
+  .cred-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
+  .cred-list li{display:flex;gap:12px;font-size:14.5px;color:var(--ink);line-height:1.5;}
+  .cred-list li svg{flex-shrink:0;margin-top:2px;}
 
-        .btn-white {
-            background-color: var(--white);
-            color: var(--dark-navy);
-            border: 2px solid var(--white);
-        }
+  /* Pilares */
+  .pilares{background:var(--bg);}
+  .pilares-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .pilar-card{
+    background:#fff;border-radius:16px;padding:30px 24px;
+    border:1px solid var(--border);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .pilar-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px -14px rgba(11,31,110,0.18);border-color:var(--turquoise);}
+  .pilar-icon{width:46px;height:46px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+  .pilar-card h3{font-size:17px;font-weight:800;color:var(--navy-text);margin-bottom:10px;}
+  .pilar-card p{font-size:14px;color:var(--gray);line-height:1.55;}
 
-        .btn-white:hover {
-            background-color: #f1f1f1;
-            color: var(--dark-navy);
-        }
+  /* Diagnóstico cómo funciona */
+  .como-funciona{background:#fff;}
+  .como-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:44px;}
+  .paso{background:var(--bg);border-radius:16px;padding:30px 24px;border:1px solid var(--border);}
+  .paso .num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:var(--navy);background:var(--turquoise);display:inline-block;padding:5px 12px;border-radius:8px;margin-bottom:16px;}
+  .paso h3{font-size:17px;font-weight:800;color:var(--navy-text);margin-bottom:10px;}
+  .paso p{font-size:14px;color:var(--gray);line-height:1.55;}
+  .como-cta{text-align:center;}
 
-        /* --- NAVEGACIÓN --- */
-        nav {
-            background-color: var(--white);
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+  /* Planes */
+  .planes{background:var(--bg);}
+  .planes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .plan-card{
+    background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:34px 28px;
+    display:flex;flex-direction:column;position:relative;
+  }
+  .plan-card.popular{border-color:var(--turquoise);box-shadow:0 22px 44px -16px rgba(11,31,110,0.22);}
+  .popular-tag{
+    position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+    background:var(--turquoise);color:var(--navy-deep);font-size:11px;font-weight:800;
+    padding:5px 16px;border-radius:20px;letter-spacing:0.04em;text-transform:uppercase;
+  }
+  .plan-name{font-size:18px;font-weight:800;color:var(--navy-text);margin-bottom:4px;}
+  .plan-sub{font-size:13px;color:var(--gray);margin-bottom:16px;}
+  .plan-price{font-family:'JetBrains Mono',monospace;font-size:36px;font-weight:700;color:var(--navy-text);margin-bottom:4px;}
+  .plan-price span{font-size:14px;color:var(--gray);font-weight:600;}
+  .plan-features{list-style:none;margin:24px 0 28px;flex-grow:1;}
+  .plan-features li{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink);margin-bottom:12px;}
+  .plan-features li svg{flex-shrink:0;margin-top:3px;}
+  .plan-card .btn{justify-content:center;width:100%;}
 
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--dark-navy);
-        }
+  /* Banner consultoría a medida */
+  .planes-custom{
+    background:linear-gradient(125deg, var(--navy) 0%, var(--navy-deep) 100%);
+    border-radius:18px;padding:36px 40px;margin-bottom:40px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;color:#fff;
+  }
+  .planes-custom h3{font-size:22px;font-weight:800;margin-bottom:8px;}
+  .planes-custom p{font-size:15px;color:rgba(255,255,255,0.8);max-width:540px;}
 
-        .logo span {
-            color: var(--primary-blue);
-        }
+  /* Final CTA */
+  .final-cta{background:var(--navy);color:#fff;text-align:center;}
+  .final-cta h2{font-size:32px;font-weight:800;margin-bottom:16px;}
+  .final-cta p{color:rgba(255,255,255,0.78);max-width:540px;margin:0 auto 32px;font-size:16px;}
 
-        /* --- HERO SECTION (Dual Layout) --- */
-        .hero {
-            position: relative;
-            background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            padding: 100px 5%;
-            color: var(--white);
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-        }
+  /* Footer */
+  footer{background:var(--navy-deep);color:rgba(255,255,255,0.68);padding:50px 0 30px;}
+  .footer-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.12);}
+  .footer-brand{display:flex;align-items:center;gap:10px;color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:18px;}
+  footer .fine{font-size:13px;text-align:center;}
+  footer .fine a{color:var(--turquoise);font-weight:600;}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, rgba(10, 25, 47, 0.95) 0%, rgba(10, 25, 47, 0.7) 100%);
-            z-index: 1;
-        }
-
-        .hero-container {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 50px;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .hero-content {
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero-content p {
-            font-size: 18px;
-            margin-bottom: 35px;
-            color: #CBD5E1;
-        }
-
-        /* Tarjeta de Diagnóstico en el Hero */
-        .hero-card {
-            flex: 0 0 450px;
-            background: rgba(10, 25, 47, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 40px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .hero-card h2 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: var(--white);
-        }
-
-        .hero-card p {
-            font-size: 15px;
-            color: #E2E8F0;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .hero-card .btn-white {
-            width: 100%;
-            font-size: 16px;
-            padding: 15px;
-        }
-
-        /* --- SECCIÓN 4 PILARES --- */
-        .section-padding {
-            padding: 80px 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            color: var(--dark-navy);
-            margin-bottom: 50px;
-        }
-
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-        }
-
-        .card-icon {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            color: var(--dark-navy);
-            margin-bottom: 15px;
-        }
-
-        /* --- SECCIÓN DE PRECIOS --- */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1100px;
-            margin: 0 auto;
-            align-items: center;
-        }
-
-        .pricing-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 40px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            position: relative;
-        }
-
-        .pricing-card.featured {
-            border: 2px solid var(--primary-blue);
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.1);
-            background-color: var(--white);
-        }
-
-        .tag-popular {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary-blue);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .pricing-card h3 {
-            font-size: 22px;
-            color: var(--dark-navy);
-            margin-bottom: 10px;
-        }
-
-        .price {
-            font-size: 40px;
-            font-weight: bold;
-            color: var(--primary-blue);
-            margin-bottom: 30px;
-        }
-
-        .price span {
-            font-size: 16px;
-            color: var(--text-muted);
-            font-weight: normal;
-        }
-
-        .features-list {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 40px;
-        }
-
-        .features-list li {
-            margin-bottom: 15px;
-            position: relative;
-            padding-left: 30px;
-        }
-
-        .features-list li::before {
-            content: '✔';
-            position: absolute;
-            left: 0;
-            color: var(--primary-blue);
-            font-weight: bold;
-        }
-
-        .pricing-card .btn {
-            width: 100%;
-        }
-
-        /* --- SOLUCIONES A MEDIDA (Diseño Claro Estilizado) --- */
-        .custom-plan {
-            background: var(--white);
-            max-width: 1100px;
-            margin: 0 auto 60px; 
-            padding: 50px 60px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 10px 40px rgba(0, 102, 255, 0.08);
-            border: 1px solid var(--border-color);
-            border-left: 6px solid var(--primary-blue);
-        }
-
-        .custom-plan-content {
-            max-width: 650px;
-            text-align: left;
-        }
-
-        .custom-plan-content h3 {
-            font-size: 28px;
-            margin-bottom: 15px;
-            color: var(--dark-navy);
-        }
-
-        .custom-plan-content p {
-            color: var(--text-muted);
-            font-size: 17px;
-            line-height: 1.7;
-        }
-
-        .custom-plan-action {
-            flex-shrink: 0;
-            margin-left: 40px;
-        }
-
-        /* --- RESPONSIVIDAD --- */
-        @media (max-width: 992px) {
-            .hero-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 40px;
-            }
-            .hero-content {
-                max-width: 100%;
-            }
-            .hero-card {
-                flex: auto;
-                width: 100%;
-                max-width: 500px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 36px; }
-            .pricing-card.featured { transform: scale(1); }
-            .pricing-grid { gap: 40px; }
-            
-            .custom-plan {
-                flex-direction: column;
-                text-align: center;
-                padding: 40px 30px;
-                margin: 0 5% 40px;
-            }
-            .custom-plan-content {
-                text-align: center;
-                margin-bottom: 30px;
-            }
-            .custom-plan-action {
-                margin-left: 0;
-            }
-        }
-    </style>
+  @media (max-width:880px){
+    .hero-grid{grid-template-columns:1fr;}
+    .ficha{margin-top:20px;}
+    .navlinks{display:none;}
+    .pilares-grid{grid-template-columns:repeat(2,1fr);}
+    .cred-grid{grid-template-columns:1fr;}
+    .como-grid{grid-template-columns:1fr;gap:20px;}
+    .planes-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:32px;}
+    .section-head h2{font-size:26px;}
+  }
+  @media (max-width:540px){
+    .pilares-grid{grid-template-columns:1fr;}
+  }
+</style>
 </head>
 <body>
 
-    <!-- Navegación -->
-    <nav>
-        <div class="logo">CONTABILIDAD<span>360</span></div>
-        <a href="https://wa.me/593987339057?text=Hola,%20quisiera%20hacer%20una%20consulta%20rápida." target="_blank" class="btn btn-outline">Contacto</a>
+<header>
+  <div class="nav">
+    <div class="brand">
+      <svg width="32" height="32" viewBox="0 0 420 400"><g>
+        <polygon points="60,340 60,230 105,170 105,340" fill="#5FE0E0"/>
+        <polygon points="105,340 105,170 150,230 150,340" fill="#0B1F6E"/>
+        <polygon points="180,340 180,140 150,180 215,40 215,340" fill="#5FE0E0"/>
+        <polygon points="215,340 215,40 280,180 250,140 250,340" fill="#0B1F6E"/>
+        <polygon points="270,340 270,230 315,170 315,340" fill="#5FE0E0"/>
+        <polygon points="315,340 315,170 360,230 360,340" fill="#0B1F6E"/>
+      </g></svg>
+      <div class="brand-name">CONTABILIDAD<span>360</span></div>
+    </div>
+    <nav class="navlinks">
+      <a href="#experiencia">Trayectoria</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#como-funciona">Diagnóstico</a>
+      <a href="#planes">Planes</a>
     </nav>
+    <a class="btn btn-primary btn-sm" href="https://wa.me/593987339057?text=Hola,%20quisiera%20solicitar%20un%20diagnóstico%20tributario%20preliminar%20para%20mi%20negocio.">Consultar por WhatsApp</a>
+  </div>
+</header>
 
-    <!-- Sección Hero (Dual Layout) -->
-    <section class="hero">
-        <div class="hero-container">
-            
-            <!-- Contenido Principal -->
-            <div class="hero-content">
-                <h1>Tranquilidad financiera y tributaria con procesos automatizados</h1>
-                <p>Fusionamos servicios tradicionales de alto nivel con tecnología SaaS para el crecimiento escalable de tu empresa en Ecuador.</p>
-                <a href="https://wa.me/593987339057?text=Hola,%20me%20interesa%20agendar%20una%20asesoría%20gratuita." target="_blank" class="btn">Agendar Asesoría Gratuita</a>
-            </div>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">
+        <span>Quito · Ecuador &amp; Asesoría Regional</span>
+      </div>
+      <h1>Dirección contable y tributaria estratégica para tu empresa.</h1>
+      <p class="lead">Protege tu negocio de contingencias con el SRI y la Superintendencia de Compañías. Gestión contable sénior con visión de dirección financiera y experiencia regional (Ecuador, Perú y Colombia).</p>
+      <div class="hero-ctas">
+        <a class="btn btn-accent" href="https://wa.me/593987339057?text=Hola,%20quiero%20solicitar%20el%20diagnóstico%20preventivo%20SRI%20sin%20costo%20para%20mi%20negocio.">Solicitar Diagnóstico Sin Costo</a>
+        <a class="btn btn-ghost" href="#planes">Ver planes mensuales</a>
+      </div>
+      <div class="trust-inline">
+        <span><span class="dot"></span>Liderazgo con nivel de Maestría</span>
+        <span><span class="dot"></span>Diagnóstico preventivo sin claves</span>
+        <span><span class="dot"></span>Atención directa y personalizada</span>
+      </div>
+    </div>
 
-            <!-- Tarjeta de Diagnóstico (Gancho Rápido) -->
-            <div class="hero-card">
-                <h2>¿Preocupado por multas u obligaciones pendientes?</h2>
-                <p>No dejes que los descuidos frenen tu negocio. Con un solo clic, analizamos y te enviamos un reporte detallado con tu <strong>estado tributario (SRI) y societario (SCVS)</strong> actual.</p>
-                <p style="font-size: 13px; color: #94A3B8;">Un servicio de diagnóstico rápido y directo, sin suscripciones ni compromisos, para que sepas exactamente dónde está parada tu empresa legalmente.</p>
-                <a href="https://wa.me/593987339057?text=Hola,%20quiero%20solicitar%20el%20reporte%20de%20mi%20estado%20tributario%20y%20societario." target="_blank" class="btn btn-white">Solicitar mi Estado Actual</a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Sección 4 Pilares -->
-    <section class="section-padding">
-        <h2 class="section-title">Nuestros 4 Pilares</h2>
-        <div class="grid-4">
-            <div class="card">
-                <div class="card-icon">⚖️</div>
-                <h3>Contabilidad Financiera</h3>
-                <p>Control riguroso y precisión bajo NIIF para asegurar la salud financiera de su empresa.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">📄</div>
-                <h3>Gestión Tributaria</h3>
-                <p>Asesoría experta en normativa SRI, anexos y auditoría preventiva para optimizar impuestos.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">👥</div>
-                <h3>Nómina y Laboral</h3>
-                <p>Gestión integral de roles de pago y cumplimiento estricto con el Ministerio de Trabajo e IESS.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🏢</div>
-                <h3>Consultoría Societaria</h3>
-                <p>Estructuración legal y cumplimiento oportuno ante la Superintendencia de Compañías.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección de Precios y Soluciones a Medida -->
-    <section class="section-padding" style="background-color: #F1F5F9;">
-        <h2 class="section-title">Servicios Corporativos B2B</h2>
-        
-        <!-- Bloque Soluciones a Medida -->
-        <div class="custom-plan">
-            <div class="custom-plan-content">
-                <h3>Planes Personalizados para Empresas</h3>
-                <p>Entendemos que cada negocio es único. Ofrecemos consultoría especializada y estructuramos un plan a tu medida, diseñado específicamente para resolver las operaciones complejas y necesidades corporativas de tu empresa.</p>
-            </div>
-            <div class="custom-plan-action">
-                <a href="https://wa.me/593987339057?text=Hola,%20busco%20una%20solución%20contable%20a%20medida%20para%20mi%20empresa." target="_blank" class="btn">Solicitar Plan a Medida</a>
-            </div>
+    <div class="ficha-wrap">
+      <div class="ficha">
+        <div class="ficha-head">
+          <div>
+            <div class="label">Diagnóstico Preventivo</div>
+            <div class="title">Estado SRI &amp; Supercías</div>
+          </div>
+          <div class="date mono">Reporte 24h</div>
         </div>
 
-        <!-- Grid de Planes Estándar -->
-        <div class="pricing-grid">
-            
-            <!-- Plan Emprendedor -->
-            <div class="pricing-card">
-                <h3>Plan Emprendedor</h3>
-                <div class="price">$60<span> / mes</span></div>
-                <ul class="features-list">
-                    <li>Declaraciones IVA/ATS</li>
-                    <li>Impuesto a la Renta Anual</li>
-                    <li>Sistema de facturación electrónica básico</li>
-                    <li>Soporte online prioritario</li>
-                </ul>
-                <a href="https://wa.me/593987339057?text=Hola,%20quiero%20empezar%20con%20el%20Plan%20Emprendedor%20de%20$60." target="_blank" class="btn btn-outline">Empezar Ahora</a>
-            </div>
-
-            <!-- Plan PYME (Destacado) -->
-            <div class="pricing-card featured">
-                <div class="tag-popular">Más Popular</div>
-                <h3>Plan PYME</h3>
-                <div class="price">$250<span> / mes</span></div>
-                <ul class="features-list">
-                    <li>Contabilidad completa bajo NIIF</li>
-                    <li>Nómina IESS/SUT (hasta 10 emp.)</li>
-                    <li>Cumplimiento SCVS</li>
-                    <li>Sistema de facturación electrónica estándar</li>
-                </ul>
-                <a href="https://wa.me/593987339057?text=Hola,%20me%20interesa%20contratar%20el%20Plan%20PYME%20de%20$250." target="_blank" class="btn">Contratar Plan</a>
-            </div>
-
-            <!-- Plan Corporativo -->
-            <div class="pricing-card">
-                <h3>Plan Corporativo 360</h3>
-                <div class="price">$650<span> / mes</span></div>
-                <ul class="features-list">
-                    <li>Todo lo del plan PYME</li>
-                    <li>Nómina ilimitada o +10 emp.</li>
-                    <li>Auditoría y Planificación Fiscal</li>
-                    <li>Sistema de facturación electrónica premium</li>
-                </ul>
-                <a href="https://wa.me/593987339057?text=Hola,%20necesito%20información%20sobre%20el%20Plan%20Corporativo%20360." target="_blank" class="btn btn-outline">Contactar a Ventas</a>
-            </div>
-
+        <div class="ficha-row">
+          <div class="item">
+            <svg class="icon-ok" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#2FAE6B"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Declaraciones IVA y Renta
+          </div>
+          <span class="status-ok">AL DÍA</span>
+        </div>
+        <div class="ficha-row">
+          <div class="item">
+            <svg class="icon-ok" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#2FAE6B"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Cumplimiento SCVS (Balances)
+          </div>
+          <span class="status-ok">AL DÍA</span>
+        </div>
+        <div class="ficha-row">
+          <div class="item">
+            <svg class="icon-warn" viewBox="0 0 20 20"><path d="M10 1.5l9 16H1z" fill="#E8A33D"/><rect x="9.2" y="7" width="1.6" height="5.4" fill="#fff"/><circle cx="10" cy="14.3" r="1" fill="#fff"/></svg>
+            Anexo Transaccional (ATS)
+          </div>
+          <span class="status-warn">REVISAR</span>
+        </div>
+        <div class="ficha-row">
+          <div class="item">
+            <svg class="icon-ok" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#2FAE6B"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Nómina y Aportes IESS
+          </div>
+          <span class="status-ok">CONCILIADO</span>
         </div>
 
-    </section>
+        <div class="ficha-foot">
+          <span>Informe confidencial y gratuito</span>
+          <span class="mono" style="color:var(--navy);font-weight:700;">CONTABILIDAD360</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="wrap">
+    <div class="trust-item">
+      <svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Diagnóstico preliminar 100% gratuito
+    </div>
+    <div class="trust-item">
+      <svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Software contable moderno en la nube
+    </div>
+    <div class="trust-item">
+      <svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Experiencia tributaria regional (EC · PE · CO)
+    </div>
+  </div>
+</div>
+
+<section class="credenciales" id="experiencia">
+  <div class="wrap">
+    <div class="cred-grid">
+      <div>
+        <div class="eyebrow">Respaldo profesional</div>
+        <h2>Más que contabilidad básica: dirección financiera para crecer.</h2>
+        <p style="color:var(--gray);font-size:16px;margin-bottom:20px;">
+          En el mercado existen cientos de tramitadores contables que se limitan a registrar facturas pasadas. En <strong>CONTABILIDAD360</strong> brindamos una asesoría directiva y proactiva: anticipamos riesgos fiscales antes de que se conviertan en multas del SRI y entregamos números claros para la toma de decisiones comerciales y bancarias.
+        </p>
+        <a class="btn btn-primary" href="https://wa.me/593987339057?text=Hola,%20quisiera%20conversar%20sobre%20asesoría%20contable%20para%20mi%20empresa.">Conversar con un especialista</a>
+      </div>
+      <div class="cred-box">
+        <h3>Diferenciales clave</h3>
+        <ul class="cred-list">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>Doble Maestría y Trayectoria Corporativa:</strong> Liderazgo técnico con sólida formación de posgrado y experiencia en finanzas multinacionales.</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>Alcance Regional Andino:</strong> Dominio de convenios de doble imposición tributaria y operaciones entre Ecuador, Colombia y Perú.</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>CFO Externo (Dirección Financiera):</strong> Estados financieros reales, flujo de caja proyectado y asesoría estratégica para gerencia.</span>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>Auditoría Preventiva Permanente:</strong> Detección temprana de inconsistencias en ATS, retenciones y compras para evitar glosas del SRI.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pilares" id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Nuestras áreas de especialidad</div>
+      <h2>Servicios integrales para blindar tu operación</h2>
+      <p>Cubrimos todo el ciclo financiero y legal de tu empresa para que no tengas que coordinar con múltiples proveedores externos.</p>
+    </div>
+    <div class="pilares-grid">
+      <div class="pilar-card">
+        <div class="pilar-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M6 6h5.5a2.5 2.5 0 010 5H6m0 0h6a2.5 2.5 0 010 5H6" stroke="#5FE0E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>BPO Contable bajo NIIF</h3>
+        <p>Contabilidad completa, conciliaciones bancarias y libros mayores al día, asegurando información fidedigna para socios y entidades financieras.</p>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 3h9l5 5v13a1 1 0 01-1 1H6a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="#5FE0E0" stroke-width="2" stroke-linejoin="round"/><path d="M9 12h6M9 16h6" stroke="#5FE0E0" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Tributación Estratégica SRI</h3>
+        <p>Declaraciones de IVA, Retenciones en la Fuente, Anexos Transaccionales (ATS) y planificación legal para el Impuesto a la Renta.</p>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="#5FE0E0" stroke-width="2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#5FE0E0" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="9" r="2.3" stroke="#5FE0E0" stroke-width="2"/><path d="M15.5 20c0-2.6 1.7-4.8 4.5-5.4" stroke="#5FE0E0" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Nómina y Gestión IESS</h3>
+        <p>Elaboración de roles de pago, cálculo de beneficios de ley (décimos, fondos de reserva), planillas IESS y actas de finiquito ante el Ministerio del Trabajo.</p>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 21V7l8-4 8 4v14" stroke="#5FE0E0" stroke-width="2" stroke-linejoin="round"/><path d="M9 21v-6h6v6M9 11h.01M15 11h.01M12 11h.01M9 15h.01M15 15h.01" stroke="#5FE0E0" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Cumplimiento Supercías</h3>
+        <p>Preparación y presentación de balances anuales, informes de comisario y cumplimiento regulatorio ante la Superintendencia de Compañías.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="como-funciona" id="como-funciona">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Diagnóstico inicial</div>
+      <h2>Conoce el estado fiscal de tu negocio en 3 pasos</h2>
+      <p>Sin compromisos ni contratos forzados. Un análisis preliminar transparente para que sepas exactamente dónde estás parado.</p>
+    </div>
+    <div class="como-grid">
+      <div class="paso">
+        <div class="num">PASO 01</div>
+        <h3>Indícanos tu RUC</h3>
+        <p>Escríbenos por WhatsApp con el nombre de tu empresa o RUC. No solicitamos contraseñas confidenciales para esta revisión preliminar.</p>
+      </div>
+      <div class="paso">
+        <div class="num">PASO 02</div>
+        <h3>Análisis y diagnóstico</h3>
+        <p>Revisamos el historial público de cumplimiento tributario ante el SRI y obligaciones societarias en la Supercías en menos de 24 horas.</p>
+      </div>
+      <div class="paso">
+        <div class="num">PASO 03</div>
+        <h3>Informe y recomendaciones</h3>
+        <p>Te entregamos un reporte claro con alertas de riesgo, posibles multas pendientes u oportunidades de ahorro. Tú decides si deseas nuestra ayuda.</p>
+      </div>
+    </div>
+    <div class="como-cta">
+      <a class="btn btn-primary" href="https://wa.me/593987339057?text=Hola,%20deseo%20solicitar%20el%20diagnóstico%20tributario%20gratuito%20de%20mi%20negocio.">Solicitar Diagnóstico Preliminar Gratis</a>
+    </div>
+  </div>
+</section>
+
+<section class="planes" id="planes">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Honorarios claros</div>
+      <h2>Planes diseñados para cada etapa empresarial</h2>
+      <p>Tarifas transparentes por suscripción mensual, sin cobros ocultos ni ataduras a largo plazo.</p>
+    </div>
+
+    <div class="planes-custom">
+      <div>
+        <h3>¿Tu empresa requiere asesoría regional o proyectos especiales?</h3>
+        <p>Estructuramos propuestas a medida para medianas empresas, operaciones transfronterizas (Ecuador - Colombia - Perú), precios de transferencia o auditorías previas a fiscalizaciones del SRI.</p>
+      </div>
+      <a class="btn btn-accent" href="https://wa.me/593987339057?text=Hola,%20requiero%20una%20propuesta%20a%20medida%20para%20mi%20empresa.">Solicitar Propuesta a Medida</a>
+    </div>
+
+    <div class="planes-grid">
+      <div class="plan-card">
+        <div class="plan-name">Profesional / Directivo</div>
+        <div class="plan-sub">Para médicos, consultores y profesionales independientes</div>
+        <div class="plan-price">$120<span>/mes</span></div>
+        <ul class="plan-features">
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Declaraciones periódicas de IVA y Retenciones</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Declaración de Impuesto a la Renta Anual</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Optimización de deducción de gastos personales</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Asistencia en facturación electrónica</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Atención ágil vía WhatsApp</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/593987339057?text=Hola,%20me%20interesa%20el%20Plan%20Profesional%20de%20$120.">Iniciar con este plan</a>
+      </div>
+
+      <div class="plan-card popular">
+        <div class="popular-tag">Plan Recomendado</div>
+        <div class="plan-name">Empresas en Crecimiento</div>
+        <div class="plan-sub">Para pymes, comercios y empresas de servicios</div>
+        <div class="plan-price">$350<span>/mes</span></div>
+        <ul class="plan-features">
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Contabilidad integral bajo normativa NIIF</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Declaraciones SRI y Anexo Transaccional (ATS)</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Nómina y cumplimiento IESS / SUT (hasta 15 colaboradores)</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Balances anuales a la Superintendencia de Compañías</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Reunión mensual de revisión de resultados</li>
+        </ul>
+        <a class="btn btn-primary" href="https://wa.me/593987339057?text=Hola,%20deseo%20contratar%20el%20Plan%20Empresas%20en%20Crecimiento%20de%20$350.">Contratar este plan</a>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-name">Dirección Corporativa</div>
+        <div class="plan-sub">Para medianas empresas e importadoras / exportadoras</div>
+        <div class="plan-price">$750<span>/mes</span></div>
+        <ul class="plan-features">
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Todo lo incluido en el Plan Crecimiento</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Servicio de CFO Externo (Dirección Financiera)</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Nómina ampliada y gestión laboral estratégica</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Planificación tributaria y prevención de contingencias</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#5FE0E0"/><path d="M6 10.3l2.3 2.3L14.5 6.8" stroke="#0B1F6E" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Asesoría en operaciones internacionales</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/593987339057?text=Hola,%20me%20gustaría%20agendar%20una%20reunión%20sobre%20el%20Plan%20Dirección%20Corporativa%20de%20$750.">Agendar reunión directiva</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>¿Quieres saber si tu empresa tiene riesgos fiscales latentes?</h2>
+    <p>Solicita hoy mismo tu diagnóstico tributario y societario sin costo. En 24 horas sabrás el estado real de tus obligaciones con el SRI y la Supercías.</p>
+    <a class="btn btn-accent" href="https://wa.me/593987339057?text=Hola,%20quiero%20solicitar%20el%20diagnóstico%20preventivo%20SRI%20sin%20costo%20para%20mi%20negocio.">Solicitar Diagnóstico Gratuito</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <svg width="28" height="28" viewBox="0 0 420 400"><g>
+          <polygon points="60,340 60,230 105,170 105,340" fill="#5FE0E0"/>
+          <polygon points="105,340 105,170 150,230 150,340" fill="#8FD8F5"/>
+          <polygon points="180,340 180,140 150,180 215,40 215,340" fill="#5FE0E0"/>
+          <polygon points="215,340 215,40 280,180 250,140 250,340" fill="#8FD8F5"/>
+          <polygon points="270,340 270,230 315,170 315,340" fill="#5FE0E0"/>
+          <polygon points="315,340 315,170 360,230 360,340" fill="#8FD8F5"/>
+        </g></svg>
+        CONTABILIDAD360
+      </div>
+      <a class="btn btn-accent btn-sm" href="https://wa.me/593987339057?text=Hola,%20quisiera%20hacer%20una%20consulta%20contable.">Contactar por WhatsApp</a>
+    </div>
+    <p class="fine">Dirección Financiera, Contable y Tributaria Integral · Quito, Ecuador · <a href="https://wa.me/593987339057">+593 98 733 9057</a></p>
+  </div>
+</footer>
 
 </body>
 </html>
